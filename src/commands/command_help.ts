@@ -1,7 +1,9 @@
-import { type CLICommand } from "../command.js";
+import type { State } from "../state.js";
 
-export function commandHelp(commands: Record<string, CLICommand>) {
+export function commandHelp(state: State) {
   console.log("Usage: \n");
+
+  const commands = state.commands;
 
   for (const command in commands) {
     if (!commands[command]) return;

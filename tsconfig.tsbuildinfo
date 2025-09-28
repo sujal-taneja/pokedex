@@ -1,1 +1,1 @@
-{"root":["./src/command.ts","./src/main.ts","./src/repl.ts","./src/commands/command_exit.ts","./src/commands/command_help.ts"],"version":"5.9.2"}
+{"root":["./src/main.ts","./src/repl.ts","./src/state.ts","./src/commands/command_bmap.ts","./src/commands/command_exit.ts","./src/commands/command_help.ts","./src/commands/command_map.ts"],"version":"5.9.2"}
