@@ -1,6 +1,8 @@
 import { createInterface, type Interface } from "readline";
 import { commandHelp } from "./commands/command_help.js";
 import { commandExit } from "./commands/command_exit.js";
+import { commandMap } from "./commands/command_map.js";
+import { commandBMap } from "./commands/command_bmap.js";
 
 export type CLICommand = {
   name: string;
@@ -12,7 +14,7 @@ export type State = {
   rl: Interface;
   commands: Record<string, CLICommand>;
   PokeAPI: {
-    prevLocationsURL: string;
+    prevLocationsURL: string | null;
     nextLocationsURL: string;
   };
 };
@@ -34,6 +36,16 @@ export function initState() {
       name: "exit",
       description: "Exit the Pokedex",
       callback: (s) => commandExit(s),
+    },
+    map: {
+      name: "map",
+      description: "Shows next 20 location areas",
+      callback: (s) => commandMap(s),
+    },
+    bmap: {
+      name: "bmap",
+      description: "Shows previous 20 location areas",
+      callback: (s) => commandBMap(s),
     },
   };
 

@@ -1,11 +1,11 @@
 import type { State } from "./state.js";
 
-export function startREPL(state: State) {
+export async function startREPL(state: State) {
   const rl = state.rl;
 
   rl.prompt();
 
-  rl.on("line", (input: string) => {
+  rl.on("line", async (input: string) => {
     const inputArray = cleanInput(input);
     const givenCommand = inputArray[0];
 
@@ -26,7 +26,11 @@ export function startREPL(state: State) {
       return;
     }
 
-    commandFound.callback(state);
+    try {
+      await commandFound.callback(state);
+    } catch (err) {
+      console.error("Could not fetch. Please try again.");
+    }
 
     console.log();
     rl.prompt();
